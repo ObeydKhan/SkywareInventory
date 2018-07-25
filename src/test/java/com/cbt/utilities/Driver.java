@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.cbt.utilities.ConfigurationReader;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Driver {

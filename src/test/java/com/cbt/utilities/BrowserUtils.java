@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.cbt.utilities.Driver;
+
 public class BrowserUtils {
 	/*
 	 * switches to new window by the exact title
