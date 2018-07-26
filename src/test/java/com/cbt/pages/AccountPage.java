@@ -21,6 +21,12 @@ public class AccountPage {
 	@FindBy(id = "subtabLink")
 	public WebElement logoutLink;
 	
+	@FindBy(id = "newTicketButton")
+	public WebElement newTicketWindow;
+	
+	@FindBy(id = "fourthtabLink")
+	public WebElement newTicketTab;
+	
 	public void logout() {
 		logoutLink.click();
 	}
