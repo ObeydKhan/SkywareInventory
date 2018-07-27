@@ -32,11 +32,15 @@ public class ChangeTheName extends TestBase {
 		
 	}
 	
+	/**
+	 * @author Cihan
+	 */
 	@Test(enabled=false, description = "Accessing to HomePage - TC004")
 	public void homePageTab() {
 		
 		HomePage homePage = new HomePage();
 		homePage.loginButtonOnHomePage.click();
+		
 		
 		LoginPage loginPage = new LoginPage();
 		loginPage.login(username, password);
@@ -61,6 +65,11 @@ public class ChangeTheName extends TestBase {
 		accountPage.newTicketWindow.click();
 		assertTrue(accountPage.newTicketTab.isDisplayed());
 		
+	}
+	
+	@Test (enabled=false, description ="change later - TC018")
+	public void something() {
+		//we will add later
 	}
 
 }
