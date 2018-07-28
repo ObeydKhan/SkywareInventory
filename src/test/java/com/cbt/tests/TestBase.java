@@ -22,7 +22,7 @@ public abstract class TestBase {
 		driver=Driver.getDriver(browser);
 		driver.get(ConfigurationReader.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.manage().window().fullscreen();
+		driver.manage().window().maximize();
 	}
 	
 	@AfterMethod (groups= {"smoke"})
