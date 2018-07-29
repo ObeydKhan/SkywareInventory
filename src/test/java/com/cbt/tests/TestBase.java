@@ -27,6 +27,6 @@ public abstract class TestBase {
 	
 	@AfterMethod (groups= {"smoke"})
 	public void tearDown() {
-		//Driver.closeDriver();
+		Driver.closeDriver();
 	}
 }
