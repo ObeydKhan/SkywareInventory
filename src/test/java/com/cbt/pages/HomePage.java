@@ -14,5 +14,13 @@ public class HomePage {
 	
 	@FindBy(xpath = "//a[@class='button login']")
 	public WebElement loginButtonOnHomePage;
+	
+	@FindBy(xpath = "//div[@class='title']")
+	public WebElement getStarted;
+	
+	@FindBy(linkText = "Register")
+	public WebElement registerButton;
+	
+	
 
 }

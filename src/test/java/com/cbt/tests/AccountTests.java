@@ -1,7 +1,7 @@
 package com.cbt.tests;
 
-
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -9,21 +9,38 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.cbt.pages.AccountPage;
 import com.cbt.pages.HomePage;
 import com.cbt.pages.LoginPage;
+import com.cbt.pages.RegistrationPage;
 import com.cbt.utilities.ConfigurationReader;
 
 public class AccountTests extends TestBase {
 
 	String username = ConfigurationReader.getProperty("username");
 	String password = ConfigurationReader.getProperty("password");
+	
+	
+	/**
+	 * @author Alex
+	 */
+	
+	@Test(enabled = true, description = "Title Validation Test - TC002")
+	public void titleCheck() {
+		
+		String expectedTitle = "Skyware Inventory | Free Web Based Inventory Tracking Software";
+		String actualTitle = driver.getTitle();
+		assertEquals(expectedTitle, actualTitle);
+
+	}
 
 	/**
 	 * @author Cihan
 	 */
+	
 	@Test(enabled = true, description = "Visibility of Account Tab Test - TC003")
 	public void dashBoardTab() {
 
@@ -44,6 +61,7 @@ public class AccountTests extends TestBase {
 	/**
 	 * @author Cihan
 	 */
+	
 	@Test(enabled = true, description = "Accessing to HomePage - TC004")
 	public void homePageTab() {
 
@@ -61,6 +79,7 @@ public class AccountTests extends TestBase {
 	/**
 	 * @author Cihan
 	 */
+	
 	@Test(enabled = true, description = "New Ticket Button - TC005")
 	public void ticketTab() {
 
@@ -77,10 +96,72 @@ public class AccountTests extends TestBase {
 		assertTrue(accountPage.newTicketTab.isDisplayed());
 
 	}
+	
+	/**
+	 * @author Obeyd
+	 */
+	
+	@Test(enabled = true, description = "Verification of new user registration - TC014")
+	public void newUserRegistration() {
+		
+		HomePage homePage = new HomePage();
+		RegistrationPage registrationPage = new RegistrationPage();
+		
+		//step1
+		String expected = "Get Started";
+		String actual = homePage.getStarted.getText();
+		assertEquals(actual, expected);
+		
+		//step2
+		homePage.registerButton.click();
+		actual = driver.getTitle();
+		expected = "Skyware Inventory | Register for your FREE single user account";
+		assertEquals(actual, expected);
+		
+		//step3
+		assertTrue(registrationPage.basicInfo.isDisplayed());
+		assertTrue(registrationPage.profileInfo.isDisplayed());
+		
+		//step4
+		assertTrue(registrationPage.emailRequired.isDisplayed());
+		assertTrue(registrationPage.passwordRequired.isDisplayed());
+		assertTrue(registrationPage.passwordConfirmRequired.isDisplayed());
+		assertTrue(registrationPage.companyNameRequired.isDisplayed());
+		assertTrue(registrationPage.firstNameRequired.isDisplayed());
+		assertTrue(registrationPage.lastNameRequired.isDisplayed());
+		assertTrue(registrationPage.countryRequired.isDisplayed());
+		assertTrue(registrationPage.cityRequired.isDisplayed());
+		assertTrue(registrationPage.stateAndProvinceRequired.isDisplayed());
+		
+		//step5
+		assertTrue(registrationPage.email.isDisplayed());
+		assertTrue(registrationPage.password.isDisplayed());
+		assertTrue(registrationPage.passwordConfirm.isDisplayed());
+		
+		//step6
+		assertTrue(registrationPage.companyName.isDisplayed());
+		assertTrue(registrationPage.firstName.isDisplayed());
+		assertTrue(registrationPage.lastName.isDisplayed());
+		assertTrue(registrationPage.country.isDisplayed());
+		assertTrue(registrationPage.address.isDisplayed());
+		assertTrue(registrationPage.city.isDisplayed());
+		assertTrue(registrationPage.stateAndProvince.isDisplayed());
+		assertTrue(registrationPage.zipCode.isDisplayed());
+		assertTrue(registrationPage.phoneNumber.isDisplayed());
+		
+		//step7
+		assertFalse(registrationPage.licenseAgreement.isSelected());
+		
+		//step8
+		assertTrue(registrationPage.licenseAgreement.isEnabled());
+		assertTrue(registrationPage.licenseAgreement.isDisplayed());
+		
+	}
 
-	/*
+	/**
 	 * @author Vika 
 	 */
+	
 	@Test(enabled = true, description = "Log Out Button - TC - 018")
 	public void verifyLogOutButton() {
 		HomePage homePage = new HomePage();
@@ -99,9 +180,10 @@ public class AccountTests extends TestBase {
 		accountPage.logout();
 	}
 
-	/*
+	/**
 	 * @author Vika 
 	 */
+	
 	@Test(enabled = true, description = "Verify help - TC - 019")
 	public void verifyHelp() {
 		HomePage homePage = new HomePage();
@@ -122,9 +204,10 @@ public class AccountTests extends TestBase {
 
 	}
 
-	/*
+	/**
 	 * @author Vika 
 	 */
+	
 	@Test(enabled = false, description = "Verify New Receipt Button - TC - 020")
 	public void verifyNewReceiptButton() {
 		HomePage homePage = new HomePage();
